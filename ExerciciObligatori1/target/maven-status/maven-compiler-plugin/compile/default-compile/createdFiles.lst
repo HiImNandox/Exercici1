@@ -1,0 +1,7 @@
+com\esLiceu\daos\UsuariDAO.class
+com\esLiceu\daos\FiguraDAO.class
+com\esLiceu\controllers\FiguraController.class
+com\esLiceu\models\Usuari.class
+com\esLiceu\daos\UsuariDAOimpl.class
+com\esLiceu\services\LoginService.class
+com\esLiceu\models\Figura.class

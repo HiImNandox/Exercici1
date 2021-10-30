@@ -1,0 +1,10 @@
+main{
+    border: 1px solid black;
+    width: 1024px;
+    height: 768px;
+    alignment: left;
+}
+aside{
+    alignment: right;
+    border: 1px solid black;
+}
