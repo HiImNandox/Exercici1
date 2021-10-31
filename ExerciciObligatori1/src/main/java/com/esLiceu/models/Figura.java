@@ -2,7 +2,23 @@ package com.esLiceu.models;
 
 public class Figura {
     private int cx, cy,id, tamany;
-    private String nom, tipus, color;
+    private String nom, tipus, color,propietari,data;
+
+    public String getData() {
+        return data;
+    }
+
+    public void setData(String data) {
+        this.data = data;
+    }
+
+    public String getPropietari() {
+        return propietari;
+    }
+
+    public void setPropietari(String propietari) {
+        this.propietari = propietari;
+    }
 
     public int getTamany() {
         return tamany;

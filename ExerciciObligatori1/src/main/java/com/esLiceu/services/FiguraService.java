@@ -4,11 +4,12 @@ import com.esLiceu.daos.FiguraDAO;
 import com.esLiceu.daos.FiguraDAOimpl;
 import com.esLiceu.models.Figura;
 
-import java.io.PrintWriter;
+import java.util.ArrayList;
+
 
 public class FiguraService {
     FiguraDAO figuraDAO = new FiguraDAOimpl();
-    public void novaFigura(int x, int y, int tamany, String tipo, String nom, String color){
+    public void novaFigura(int x, int y, int tamany, String tipo, String nom, String color,String propietari){
         Figura f = new Figura();
         f.setCx(x);
         f.setCy(y);
@@ -16,49 +17,36 @@ public class FiguraService {
         f.setTipus(tipo);
         f.setColor(color);
         f.setNom(nom);
+        f.setPropietari(propietari);
         figuraDAO.saveFigura(f);
     }
-    public String pintarCuadrat(int x, int y, int tamany, String color){
-        String tornarCuadrat = "        <script>\n" +
-                "            var c = document.getElementById(\"canvo\");\n" +
-                "            var ctx = c.getContext(\"2d\");\n" +
-                "            ctx.fillStyle = \""+color+"\";\n" +
-                "            ctx.fillRect("+x+", "+y+", "+tamany+","+tamany+");\n" +
-                "            ctx.fill();\n" +
-                "        </script>";
-
-        return tornarCuadrat;
+    public int obtenirTipusDeFigura(String tipus){
+        int tornarTipus = 0;
+        switch (tipus){
+            case "Triangle":
+                tornarTipus = 1;
+                break;
+            case "Cuadrat":
+               tornarTipus = 2;
+                break;
+            case "Cercle":
+                tornarTipus = 3;
+                break;
+            case "Pentagon":
+                tornarTipus = 4;
+                break;
+            case "Estrella":
+                tornarTipus = 5;
+                break;
+        }
+        return tornarTipus;
     }
-
-    public String pintarCercle(int x, int y, int tamany, String color){
-        String tornarCercle="<script>\n" +
-                "var c = document.getElementById(\"myCanvas\");\n" +
-                "var ctx = c.getContext(\"2d\");\n" +
-                "ctx.beginPath();\n" +
-                "ctx.arc("+x+", "+y+","+tamany+", 0, 2 * Math.PI);\n" +
-                "ctx.stroke();\n" +
-                "ctx.fillStyle = \""+color+"\";\n" +
-                "ctx.fill();\n" +
-                "</script> ";
-        return tornarCercle;
-    }
-
-    public String pintarTriangle(int x, int y, int tamany, String color){
-        String tornarTriangle= "";
-
-        return tornarTriangle;
-    }
-
-    public String pintarPentagon(){
-        String tornarPentagon="";
-
-        return tornarPentagon;
-    }
-
-    public String pintarEstrella(){
-        String tornarEstrella="";
-
-        return  tornarEstrella;
+    public ArrayList<Integer> obtenirTotesIDs(){
+       ArrayList<Integer> ids = new ArrayList<>();
+        for (int i = 0; i < figuraDAO.getAllFigures().size(); i++) {
+            ids.add(figuraDAO.getAllFigures().get(i).getId());
+        }
+        return ids;
     }
 
 }

@@ -2,9 +2,12 @@ main{
     border: 1px solid black;
     width: 1024px;
     height: 768px;
-    alignment: left;
+    float: left;
 }
 aside{
-    alignment: right;
+    float: right;
     border: 1px solid black;
+}
+h4{
+    text-align: center;
 }

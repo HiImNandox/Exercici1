@@ -7,6 +7,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
 
@@ -39,7 +40,8 @@ public class UsuariController extends HttpServlet {
                 i mostrar un missatge que el usuari se ha logeat correctament
                 o un reedirect cap al formulari de figura
              */
-
+            HttpSession session = req.getSession();
+            session.setAttribute("username", user);
             RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/jsp/main.jsp");
             dispatcher.forward(req, resp);
         }else{
